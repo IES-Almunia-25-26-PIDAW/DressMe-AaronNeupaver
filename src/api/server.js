@@ -1,5 +1,5 @@
 import express from 'express';
-import { obtenerTodas, agregarPrenda } from '../logica/GestorArmario.js'; // ¡Reusas la lógica!
+import { obtenerTodas, agregarPrenda } from '../logica/GestorArmario.js'; 
 
 const app = express();
 app.use(express.json());
