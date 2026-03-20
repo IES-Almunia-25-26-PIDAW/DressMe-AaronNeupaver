@@ -7,14 +7,13 @@ export const Categorias = Object.freeze({
     CALZADO: "Calzado",
     ACCESORIOS: "Accesorios"
 });
-// Simulamos una base de datos con un array (luego esto será PostgreSQL)
 const baseDeDatos = [];
 
 export function agregarPrenda(nombre, categoria, color) {
     const nuevaPrenda = {
         id: baseDeDatos.length + 1,
         nombre,
-        categoria, // Aquí llegará el valor del Enum
+        categoria, 
         color,
         fecha: new Date().toISOString()
     };
