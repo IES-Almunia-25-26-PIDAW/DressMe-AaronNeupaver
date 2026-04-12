@@ -1,0 +1,253 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --1: #ffffff;
+    --2: #20b89c;
+    --3: #000000;
+    --4: #dddddd;
+}
+
+
+/*****************************************************************************************************************************************/
+/********************
+        Página principal "Home"
+********************/
+/*****************************************************************************************************************************************/
+main {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+}
+
+.comienzo {
+
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 0 2rem 2rem 0;
+    border: var(--2) solid;
+    box-shadow: 1rem 1rem 2.5rem var(--2);
+
+}
+
+.comienzo__principal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+}
+
+.comienzo__principal__boton {
+    background: none;
+    color: var(--2);
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 2rem;
+    border-radius: 2rem;
+    border: var(--2) solid 0.2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.comienzo__principal__boton:hover {
+    background-color: var(--2);
+    color: var(--1);
+    transform: scale(1.1);
+    /* Aumenta tamaño */
+}
+
+.img__comienzo {
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        main inicio de sesión
+********************/
+/*****************************************************************************************************************************************/
+
+main {
+    height: 100vh;
+}
+
+.iniciar-sesion {
+    width: 80%;
+
+    margin: 0 auto;
+    padding: 4rem 4rem;
+    background-color: var(--4);
+    border-radius: 0.63rem;
+    text-align: center;
+}
+
+.iniciar-sesion__cambiar-registro {
+    margin-bottom: 1.25rem;
+}
+
+.iniciar-sesion__titulo {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--3);
+}
+
+.iniciar-sesion__btn-registro {
+    padding: 0.63rem 1.25rem;
+    background-color: var(--2);
+    color: var(--1);
+    border: none;
+    border-radius: 0.31rem;
+    cursor: pointer;
+    margin-top: 0.63rem;
+}
+
+.iniciar-sesion__btn-registro:hover {
+    background-color: #007777;
+}
+
+.iniciar-sesion__formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iniciar-sesion__logo {
+    width: 6.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.iniciar-sesion__bienvenida {
+    font-size: 1.13rem;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+    color: var(--3);
+}
+
+.iniciar-sesion__label {
+    font-size: 0.88rem;
+    margin-bottom: 0.31rem;
+    text-align: left;
+    width: 100%;
+    max-width: 25rem;
+    color: var(--3);
+}
+
+.iniciar-sesion__input {
+    padding: 0.63rem;
+    margin-bottom: 0.94rem;
+    width: 100%;
+    max-width: 25rem;
+    border: 0.06rem solid var(--4);
+    border-radius: 0.31rem;
+}
+
+.iniciar-sesion__enlace {
+    display: inline-block;
+    margin-top: 1.25rem;
+}
+
+.iniciar-sesion__btn-enviar {
+    padding: 0.63rem 1.25rem;
+    background-color: var(--2);
+    color: var(--1);
+    border: none;
+    border-radius: 0.31rem;
+    cursor: pointer;
+}
+
+.iniciar-sesion__btn-enviar:hover {
+    background-color: #007777;
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        Footer
+********************/
+/*****************************************************************************************************************************************/
+
+footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 4rem;
+    border-radius: 2rem 2rem 0 0;
+    box-shadow: 0.2rem 0.2rem 0.9rem var(--2);
+
+}
+
+.section_footer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer_logo {
+    display: flex;
+    justify-content: center;
+    width: 10rem;
+}
+
+.ul_menu_footer {
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem 0.1rem 0.1rem;
+    gap: 1rem;
+    color: var(--2);
+    border-top: 0.15rem solid var(--2);
+}
+
+.li_menu_footer {
+    list-style: none;
+}
+
+.politicas_footer {
+
+    text-decoration: none;
+    color: var(--3);
+
+}
+
+.derechos_footer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.derechos_footer p {
+    font-size: 0.8rem;
+}
+
+/*****************************************************************************************************************************************/

@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script src="{% static 'js/inicio-sesion.js' %}" defer></script>
+
+</head>
+
+<body>
+
+    <main>
+        <section class="iniciar-sesion">
+            <article class="iniciar-sesion__cambiar-registro">
+
+                <h1 class="iniciar-sesion__titulo">¿Todavía no tienes una cuenta?</h1>
+
+                <button data-url="{% url 'register' %}" onclick="window.location.href=this.getAttribute('data-url');" class="iniciar-sesion__btn-registro">
+                    REGISTRARSE
+                </button>
+
+            </article>
+            <form class="iniciar-sesion__formulario">
+                <img src="{% static 'assets/mini-logo.png' %}" alt="Logo de DressMe" class="iniciar-sesion__logo">
+                <h2 class="iniciar-sesion__bienvenida">Bienvenido, ¡un gusto volver a verte!</h2>
+
+                <label for="usuario" class="iniciar-sesion__label">
+                    Usuario
+                    <input type="text" id="usuario" name="usuario" class="iniciar-sesion__input" required
+                        placeholder="Tu nombre de usuario">
+                </label>
+
+                <label for="email" class="iniciar-sesion__label">
+                    Correo Electrónico
+                    <input type="email" id="email" name="email" class="iniciar-sesion__input" required
+                        placeholder="Tu correo electrónico">
+                </label>
+
+                <label for="password" class="iniciar-sesion__label">
+                    Contraseña
+                    <input type="password" id="password" name="password" class="iniciar-sesion__input" required
+                        placeholder="Tu contraseña">
+                </label>
+
+                <a href="#" class="iniciar-sesion__enlace">
+                    <button class="iniciar-sesion__btn-enviar" type="submit">Enviar</button>
+                </a>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <section class="section_footer">
+            <a href="index.html" class="footer_logo">
+                <img class="footer_logo" src="{% static 'assets/logo.png' %}" alt="logo_dressme">
+            </a>
+            <nav class="menu_footer">
+                <ul class="ul_menu_footer">
+                    <li class="li_menu_footer">
+                        <a class="politicas_footer" href="">Aviso Legal</a>
+                    </li>
+                    |
+                    <li class="li_menu_footer">
+                        <a class="politicas_footer" href="">Política de Privacidad</a>
+                    </li>
+                    |
+                    <li class="li_menu_footer">
+                        <a class="politicas_footer" href="">Política de Cookies</a>
+                    </li>
+                </ul>
+            </nav>
+            <article class="derechos_footer">
+                <p>© 2025 DressMe</p>
+                <p>Desarrollado por CodeSHOP</p>
+            </article>
+        </section>
+    </footer>
+
+</body>
+
+</html>

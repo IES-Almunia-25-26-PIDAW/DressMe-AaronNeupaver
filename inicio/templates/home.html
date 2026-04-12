@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+
+</head>
+
+<body>
+    <main>
+        <section class="comienzo">
+            <article class="comienzo__principal">
+                <img class="comienzo__principal__img" src="{% static 'assets/logo.png' %}" alt="logo">
+                <h1 class="comienzo__principal__titulo"> Tu armario inteligente. </h1>
+
+                <button data-url="{% url 'login' %}" onclick="window.location.href=this.getAttribute('data-url');" id="btn-diseno-propio"
+                    class="comienzo__principal__boton">
+                    <p class="comienzo__principal__boton__parrafo"> Comenzar </p>
+                </button>
+
+            </article>
+
+        </section>
+        <section class="img__comienzo">
+            <article class="img__comienzo__principal">
+                <img class="img__comienzo__principal__img" src="{% static 'assets/principal.png' %}" alt="">
+            </article>
+
+        </section>
+    </main>
+
+    <script>
+        // 1. Primero declaras la función (Scope Global)
+        function handleCredentialResponse(response) {
+            try {
+                const payload = JSON.parse(atob(response.credential.split('.')[1]));
+                console.log("Logueado con éxito:", payload.name);
+                alert("¡Bienvenido " + payload.name + "!");
+            } catch (error) {
+                console.error("Error al decodificar el token:", error);
+            }
+        }
+
+        // 2. Luego el código de inicialización
+        window.onload = function () {
+            const miBoton = document.getElementById("btn-diseno-propio");
+            const contenedorGoogle = document.getElementById("google-button-hidden");
+
+            google.accounts.id.initialize({
+                client_id: "162460213441-qavs4jnq2jv4qapq4d241ovfbongoej0.apps.googleusercontent.com",
+                callback: handleCredentialResponse, // Ahora sí la encontrará
+                use_fedcm_for_prompt: true
+            });
+
+            google.accounts.id.renderButton(
+                contenedorGoogle,
+                {
+                    theme: "outline",
+                    size: "large",
+                    width: miBoton.offsetWidth
+                }
+            );
+        };
+    </script>
+
+</body>
+
+</html>
