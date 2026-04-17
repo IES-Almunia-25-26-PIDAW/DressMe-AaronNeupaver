@@ -2,7 +2,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 :root {
@@ -256,11 +256,16 @@ footer {
 
 
 /*****************************************************************************************************************************************/
+/********************
+        Dashboard 
+********************/
+/*****************************************************************************************************************************************/
 
 /*****************************************************************************************************************************************/
 /********************
-        Dashboard Premium Glassmorphism
-********************/
+                                                            Dashboard header
+                                                            ********************/
+/*****************************************************************************************************************************************/
 
 .cuerpo {
     display: flex;
@@ -379,4 +384,171 @@ footer {
 
 .cuerpo-cabecera-contenedor-logout:hover {
     transform: translateY(-0.2rem);
+}
+
+/*****************************************************************************************************************************************/
+/********************
+                                                            Dashboard main
+                                                            ********************/
+/*****************************************************************************************************************************************/
+
+.cuerpo-principal {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    text-align: left;
+    max-height: 100vh;
+    overflow-y: auto;
+    width: 100%;
+    padding: 2.5rem 3rem;
+    gap: 2.5rem;
+}
+
+.cuerpo-principal-bienvenida {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.cuerpo-principal-bienvenida-texto-titulo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin: 0 0 0.2rem 0;
+    color: #2b2d42;
+}
+
+.cuerpo-principal-bienvenida-texto-parrafo {
+    color: var(--6);
+    font-size: 1rem;
+    margin: 0;
+}
+
+.cuerpo-principal-bienvenida-perfil {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    gap: 1rem;
+    background: var(--1);
+    padding: 0.5rem 0.5rem 0.5rem 1.2rem;
+    border-radius: 1.875rem;
+    backdrop-filter: blur(0.6rem);
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+
+.cuerpo-principal-bienvenida-perfil:hover {
+    box-shadow: 0 1rem 3rem var(--5);
+}
+
+.cuerpo-principal-bienvenida-perfil-nombre {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cuerpo-principal-bienvenida-perfil-inicial {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    color: var(--1);
+    background-color: var(--2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+
+}
+
+.cuerpo-principal-estadisticas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(17.5rem, 1fr));
+    gap: 2rem;
+}
+
+.cuerpo-principal-estadisticas-item {
+    background: var(--1);
+    backdrop-filter: blur(0.6rem);
+    -webkit-backdrop-filter: blur(0.6rem);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 1.25rem;
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.cuerpo-principal-estadisticas-item:hover {
+    box-shadow: 0 1rem 3rem var(--5);
+    transform: translateY(-0.5rem);
+}
+
+.cuerpo-principal-estadisticas-item-titulo {
+    font-size: 1.1rem;
+    color: var(--6);
+    font-weight: 500;
+    margin: 0 0 0.5rem 0;
+}
+
+.cuerpo-principal-estadisticas-item-parrafo1 {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--3);
+    margin: 0;
+    line-height: 1.1;
+
+}
+
+.cuerpo-principal-estadisticas-item-parrafo2 {
+    height: 0.375rem;
+    background: #edf2f4;
+    border-radius: 0.1875rem;
+    margin-top: 1rem;
+    overflow: hidden;
+}
+
+.cuerpo-principal-estadisticas-item-parrafo2-barra {
+    height: 100%;
+    background: linear-gradient(90deg, var(--2), #17a2b8);
+    border-radius: 0.1875rem;
+}
+
+.cuerpo-principal-estadisticas-item-parrafo3 {
+    font-size: 0.9rem;
+    color: var(--6);
+    margin-top: 1rem;
+}
+
+.cuerpo-principal-estadisticas-item-parrafo4 {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--5);
+    color: var(--2);
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+}
+
+.cuerpo-principal-estadisticas-item-boton {
+    margin-top: 1.2rem;
+    padding: 0.6rem 1.5rem;
+    background: var(--2);
+    color: var(--1);
+    border: none;
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-shadow: 0 4px 15px var(--5);
+}
+
+.cuerpo-principal-estadisticas-item-boton:hover {
+    background: var(--2);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--5);
 }
