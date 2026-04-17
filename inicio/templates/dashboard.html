@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> Dashboard | DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+
+    <!-- Fuente Premium -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="cuerpo">
+
+    <header class="cuerpo-cabecera">
+
+        <a class="cuerpo-cabecera-logo" href="{% url 'dashboard' %}">
+            <img class="cuerpo-cabecera-logo-imagen" src="{% static 'assets/logo.png' %}" alt="Logo DressMe">
+        </a>
+
+
+        <nav class="cuerpo-cabecera-contenedor">
+            <ul>
+                <li href="#" class="cuerpo-cabecera-contenedor-itemactivo">
+                    <a class="cuerpo-cabecera-contenedor-item-apartado">📊</a> Resumen
+                </li>
+                <li href="#" class="cuerpo-cabecera-contenedor-item">
+                    <a class="cuerpo-cabecera-contenedor-item-apartado">👕</a> Armario
+                </li>
+                <li href="#" class="cuerpo-cabecera-contenedor-item">
+                    <a class="cuerpo-cabecera-contenedor-item-apartado">✨</a> IA Outfits
+                </li>
+                <li href="#" class="cuerpo-cabecera-contenedor-item">
+                    <a class="cuerpo-cabecera-contenedor-item-apartado">⭐</a> Mis Favoritos
+                </li>
+                <li href="#" class="cuerpo-cabecera-contenedor-item">
+                    <a class="cuerpo-cabecera-contenedor-item-apartado">⚙️</a> Configuración
+                </li>
+            </ul>
+
+            <a href="{% url 'home' %}">Cerrar Sesión</a>
+        </nav>
+
+    </header>
+
+
+
+</body>
+
+</html>

@@ -8,3 +8,6 @@ def inicio_sesion(request):
 
 def register_user(request):
     return render(request, 'registro-usuario.html')
+
+def dashboard(request):
+    return render(request, 'dashboard.html')
