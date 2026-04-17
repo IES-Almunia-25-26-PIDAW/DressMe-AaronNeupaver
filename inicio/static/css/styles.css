@@ -284,9 +284,14 @@ footer {
 
 .cuerpo-cabecera-logo {
     display: flex;
+    padding: 1rem 1.5rem 3rem;
+}
+
+.cuerpo-cabecera-logo-imagen {
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: center;
-    padding: 2.5rem 1.5rem;
+    width: 10rem;
 }
 
 .cuerpo-cabecera-contenedor {
