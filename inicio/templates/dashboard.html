@@ -38,9 +38,6 @@
                 <li href="#" class="cuerpo-cabecera-contenedor-item">
                     <a class="cuerpo-cabecera-contenedor-item-apartado">⭐</a> Mis Favoritos
                 </li>
-                <li href="#" class="cuerpo-cabecera-contenedor-item">
-                    <a class="cuerpo-cabecera-contenedor-item-apartado">⚙️</a> Configuración
-                </li>
             </ul>
 
             <a class="cuerpo-cabecera-contenedor-logout" href="{% url 'home' %}">Cerrar Sesión</a>
@@ -85,6 +82,36 @@
                 <p class="cuerpo-principal-estadisticas-item-parrafo1">Lista</p>
                 <p class="cuerpo-principal-estadisticas-item-parrafo3">Basada en clima actual</p>
                 <button class="cuerpo-principal-estadisticas-item-boton">Ver Sugerencia</button>
+            </article>
+        </section>
+
+        <section class="cuerpo-principal-añadidos">
+            <article class="cuerpo-principal-añadidos-titulo">
+                <h3 class="cuerpo-principal-añadidos-titulo-texto">Últimas Prendas Añadidas</h3>
+                <button class="cuerpo-principal-añadidos-titulo-boton">Ver Todas</button>
+            </article>
+
+            <article class="cuerpo-principal-añadidos-item">
+
+                <article class="cuerpo-principal-añadidos-item-añadido">
+                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{% static 'assets/mini-logo.png' %}"
+                        alt="Logo DressMe">
+                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">Camiseta</h4>
+                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">Hace un día</p>
+                </article>
+
+                <article class="cuerpo-principal-añadidos-item-añadido">
+                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{% static 'assets/mini-logo.png' %}"
+                        alt="Logo DressMe">
+                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">Camiseta</h4>
+                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">Hace un día</p>
+                </article>
+
+                <article class="cuerpo-principal-añadidos-item-añadir">
+                    <span class="cuerpo-principal-añadidos-item-añadir-signo">+</span>
+                    <p class="cuerpo-principal-añadidos-item-añadir-texto">Nueva Prenda</p>
+                </article>
+
             </article>
         </section>
 
