@@ -571,28 +571,84 @@ footer {
     align-items: center;
 }
 
+.cuerpo-principal-añadidos-titulo-texto {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #2b2d42;
+    margin: 0;
+}
+
+.cuerpo-principal-añadidos-titulo-boton {
+    background: none;
+    border: none;
+    color: var(--2);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+.cuerpo-principal-añadidos-titulo-boton:hover {
+    color: #19957d;
+    text-decoration: underline;
+}
+
 .cuerpo-principal-añadidos-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1.5rem;
 }
 
 .cuerpo-principal-añadidos-item-añadido {
-    width: 10rem;
-    height: 20rem;
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.01);
+}
+
+.cuerpo-principal-añadidos-item-añadido:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.cuerpo-principal-añadidos-item-añadido-imagen {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+    background-size: cover;
+    background-position: center;
+}
+
+.cuerpo-principal-añadidos-item-añadido-texto {
+    margin: 0 0 0.3rem 0;
+    font-size: 1rem;
+    color: #2b2d42;
+}
+
+.cuerpo-principal-añadidos-item-añadido-tiempo {
+    margin: 0;
+    font-size: 0.8rem;
+    color: #8d99ae;
+}
+
+
+.cuerpo-principal-añadidos-item-añadir {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: var(--1);
-    padding: 1rem;
-    border-radius: 1.25rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    border-radius: 1rem;
+    background: rgba(32, 184, 156, 0.05);
+    border: 2px dashed rgba(32, 184, 156, 0.3);
+    color: var(--2);
 }
 
-.cuerpo-principal-añadidos-item-añadido-imagen {
-    width: rem;
-    height: 5rem;
-    border-radius: 0.5rem;
+.cuerpo-principal-añadidos-item-añadir:hover {
+    border-color: var(--2);
+    background: rgba(32, 184, 156, 0.1);
 }
