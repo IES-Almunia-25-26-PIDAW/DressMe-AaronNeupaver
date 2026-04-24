@@ -8,7 +8,7 @@
     <title> DressMe </title>
     <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    <script src="{% static 'js/inicio-sesion.js' %}" defer></script>
+    <script src="{% static 'assets/js/inicio-sesion.js' %}" defer></script>
 
 </head>
 
@@ -20,7 +20,8 @@
 
                 <h1 class="iniciar-sesion__titulo">¿Todavía no tienes una cuenta?</h1>
 
-                <button data-url="{% url 'register' %}" onclick="window.location.href=this.getAttribute('data-url');" class="iniciar-sesion__btn-registro">
+                <button data-url="{% url 'register' %}" onclick="window.location.href=this.getAttribute('data-url');"
+                    class="iniciar-sesion__btn-registro">
                     REGISTRARSE
                 </button>
 
@@ -47,9 +48,7 @@
                         placeholder="Tu contraseña">
                 </label>
 
-                <a href="#" class="iniciar-sesion__enlace">
-                    <button class="iniciar-sesion__btn-enviar" type="submit">Enviar</button>
-                </a>
+                <button class="iniciar-sesion__btn-enviar" type="submit">Enviar</button>
             </form>
         </section>
 
