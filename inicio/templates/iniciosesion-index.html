@@ -26,9 +26,32 @@
                 </button>
 
             </article>
-            <form class="iniciar-sesion__formulario">
+            <form class="iniciar-sesion__formulario" method="POST">
+                {% csrf_token %}
                 <img src="{% static 'assets/mini-logo.png' %}" alt="Logo de DressMe" class="iniciar-sesion__logo">
                 <h2 class="iniciar-sesion__bienvenida">Bienvenido, ¡un gusto volver a verte!</h2>
+
+                {% if messages %}
+                <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        /* {% for message in messages %} */
+                        {
+                            const notif = document.createElement('div');
+                            const tipo = '{% if message.tags == "error" %}error{% else %}exito{% endif %}';
+                            notif.classList.add('notificacion', `notificacion--${tipo}`);
+                            notif.textContent = '{{ message|escapejs }}';
+                            document.body.appendChild(notif);
+
+                            setTimeout(() => notif.classList.add('mostrar'), 10);
+                            setTimeout(() => {
+                                notif.classList.remove('mostrar');
+                                setTimeout(() => notif.remove(), 300);
+                            }, 3000);
+                        }
+                        /* {% endfor %} */
+                    });
+                </script>
+                {% endif %}
 
                 <label for="usuario" class="iniciar-sesion__label">
                     Usuario

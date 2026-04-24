@@ -43,33 +43,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    if (formulario) {
-        formulario.addEventListener('submit', (evento) => {
-            evento.preventDefault();
-
-            const datosGuardados = JSON.parse(localStorage.getItem('datos_formulario'));
-
-            if (!datosGuardados) {
-                mostrarNotificacion('No hay ninguna cuenta registrada. Regístrate primero.', 'error', irARegistro);
-                return;
-            }
-
-            const usuarioIngresado = campoUsuario.value.trim();
-            const correoIngresado = campoCorreo.value.trim();
-            const contrasenaIngresada = campoContrasena.value.trim();
-
-            if (
-                usuarioIngresado === datosGuardados.usuario &&
-                correoIngresado === datosGuardados.email &&
-                contrasenaIngresada === datosGuardados.password
-            ) {
-                mostrarNotificacion('¡Has entrado en la cuenta!', 'exito', () => {
-                    sessionStorage.setItem('sesion_iniciada', 'true');
-                    window.location.href = '/dashboard/';
-                });
-            } else {
-                mostrarNotificacion('Solicitud rechazada.', 'error', irARegistro);
-            }
-        });
-    }
 });

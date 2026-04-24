@@ -143,31 +143,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Submit del formulario (que no recargue la página)
+    // Submit del formulario
     if (formulario) {
         formulario.addEventListener('submit', (evento) => {
-            evento.preventDefault();
-
-            if (validarFormulario()) {
-                const datosFormulario = {};
-
-                campos.forEach(campo => {
-                    datosFormulario[campo.name] = campo.value.trim();
-                });
-
-                localStorage.setItem('datos_formulario', JSON.stringify(datosFormulario));
-
-                mostrarNotificacion('¡Registro completado!', 'exito', () => {
-                    const urlRegistro = document.querySelector('.iniciar-sesion__btn-registro');
-                    if (urlRegistro && urlRegistro.getAttribute('data-url')) {
-                        window.location.href = urlRegistro.getAttribute('data-url');
-                    } else {
-                        window.location.href = 'iniciosesion-index.html'; // ✅ Redirección directa al login
-                    }
-                });
-            } else {
+            if (!validarFormulario()) {
+                evento.preventDefault(); // Evitamos el envío si hay errores visuales
                 mostrarNotificacion('Revisa los campos, hay algo que falta o está mal.', 'error');
             }
+            // Si es válido, no hacemos preventDefault y dejamos que el navegador lo envíe a Django
         });
     }
 });
