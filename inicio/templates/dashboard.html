@@ -26,18 +26,18 @@
 
         <nav class="cuerpo-cabecera-contenedor">
             <ul>
-                <li href="#" class="cuerpo-cabecera-contenedor-itemactivo">
-                    <a class="cuerpo-cabecera-contenedor-item-apartado">📊</a> Resumen
-                </li>
-                <li href="#" class="cuerpo-cabecera-contenedor-item">
-                    <a class="cuerpo-cabecera-contenedor-item-apartado">👕</a> Armario
-                </li>
-                <li href="#" class="cuerpo-cabecera-contenedor-item">
-                    <a class="cuerpo-cabecera-contenedor-item-apartado">✨</a> IA Outfits
-                </li>
-                <li href="#" class="cuerpo-cabecera-contenedor-item">
-                    <a class="cuerpo-cabecera-contenedor-item-apartado">⭐</a> Mis Favoritos
-                </li>
+                <a href="{% url 'dashboard' %}" class="cuerpo-cabecera-contenedor-itemactivo">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">📊</span> Resumen
+                </a>
+                <a href="{% url 'armario' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">👕</span> Armario
+                </a>
+                <a href="{% url 'ia_outfits' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">✨</span> IA Outfits
+                </a>
+                <a href="{% url 'favoritos' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">⭐</span> Mis Favoritos
+                </a>
             </ul>
 
             <a class="cuerpo-cabecera-contenedor-logout" href="{% url 'home' %}">Cerrar Sesión</a>
@@ -54,8 +54,8 @@
             </article>
 
             <article class="cuerpo-principal-bienvenida-perfil">
-                <p class="cuerpo-principal-bienvenida-perfil-nombre">Erneupa</p>
-                <p class="cuerpo-principal-bienvenida-perfil-inicial">E</p>
+                <p class="cuerpo-principal-bienvenida-perfil-nombre">{{ request.user.username }}</p>
+                <p class="cuerpo-principal-bienvenida-perfil-inicial">{{ request.user.username|make_list|first|upper }}</p>
             </article>
         </section>
 
@@ -63,17 +63,17 @@
             <article class="cuerpo-principal-estadisticas-item">
 
                 <h3 class="cuerpo-principal-estadisticas-item-titulo">Prendas Registradas</h3>
-                <p class="cuerpo-principal-estadisticas-item-parrafo1">50</p>
+                <p class="cuerpo-principal-estadisticas-item-parrafo1">{{ total_prendas }}</p>
                 <div class="cuerpo-principal-estadisticas-item-parrafo2">
-                    <div class="cuerpo-principal-estadisticas-item-parrafo2-barra" style="width: 50%;"></div>
+                    <div class="cuerpo-principal-estadisticas-item-parrafo2-barra" style="width: {{ porcentaje_armario|floatformat:0 }}%;"></div>
                 </div>
                 <p class="cuerpo-principal-estadisticas-item-parrafo3">Capacidad del armario virtual</p>
             </article>
 
             <article class="cuerpo-principal-estadisticas-item">
                 <h3 class="cuerpo-principal-estadisticas-item-titulo">Outfits Guardados</h3>
-                <p class="cuerpo-principal-estadisticas-item-parrafo1">12</p>
-                <p class="cuerpo-principal-estadisticas-item-parrafo4">+3 esta semana</p>
+                <p class="cuerpo-principal-estadisticas-item-parrafo1">{{ outfits_guardados }}</p>
+                <p class="cuerpo-principal-estadisticas-item-parrafo4">+{{ outfits_esta_semana }} esta semana</p>
                 <p class="cuerpo-principal-estadisticas-item-parrafo3">Tus mejores combinaciones</p>
             </article>
 
@@ -81,36 +81,35 @@
                 <h3 class="cuerpo-principal-estadisticas-item-titulo">Sugerencia IA</h3>
                 <p class="cuerpo-principal-estadisticas-item-parrafo1">Lista</p>
                 <p class="cuerpo-principal-estadisticas-item-parrafo3">Basada en clima actual</p>
-                <button class="cuerpo-principal-estadisticas-item-boton">Ver Sugerencia</button>
+                <a href="{% url 'ia_outfits' %}" class="cuerpo-principal-estadisticas-item-boton">Ver Sugerencia</a>
             </article>
         </section>
 
         <section class="cuerpo-principal-añadidos">
             <article class="cuerpo-principal-añadidos-titulo">
                 <h3 class="cuerpo-principal-añadidos-titulo-texto">Últimas Prendas Añadidas</h3>
-                <button class="cuerpo-principal-añadidos-titulo-boton">Ver Todas</button>
+                <a href="{% url 'armario' %}" class="cuerpo-principal-añadidos-titulo-boton">Ver Todas</a>
             </article>
 
             <article class="cuerpo-principal-añadidos-item">
 
-                <article class="cuerpo-principal-añadidos-item-añadido">
-                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{% static 'assets/mini-logo.png' %}"
-                        alt="Logo DressMe">
-                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">Camiseta</h4>
-                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">Hace un día</p>
-                </article>
-
-                <article class="cuerpo-principal-añadidos-item-añadido">
-                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{% static 'assets/mini-logo.png' %}"
-                        alt="Logo DressMe">
-                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">Camiseta</h4>
-                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">Hace un día</p>
-                </article>
-
-                <article class="cuerpo-principal-añadidos-item-añadir">
+                <article class="cuerpo-principal-añadidos-item-añadir" onclick="abrirFormularioPrenda()">
                     <span class="cuerpo-principal-añadidos-item-añadir-signo">+</span>
                     <p class="cuerpo-principal-añadidos-item-añadir-texto">Nueva Prenda</p>
                 </article>
+
+                {% for prenda in ultimas_prendas %}
+                <article class="cuerpo-principal-añadidos-item-añadido cuerpo-principal-añadidos-item-añadido--relativo">
+                    <form action="{% url 'eliminar_prenda' prenda.id %}" method="POST" class="cuerpo-principal-añadidos-item-añadido-formulario-eliminar">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar esta prenda?');" class="cuerpo-principal-añadidos-item-añadido-boton-eliminar">✕</button>
+                    </form>
+                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{{ prenda.imagen.url }}"
+                        alt="{{ prenda.nombre }}" style="object-fit: cover;">
+                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">{{ prenda.nombre }}</h4>
+                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">{{ prenda.categoria }}</p>
+                </article>
+                {% endfor %}
 
             </article>
         </section>
@@ -118,7 +117,8 @@
 
     </main>
 
-
+    {% include 'formulario_prenda.html' %}
+    <script src="{% static 'assets/js/formulario_prenda.js' %}"></script>
 
 </body>
 

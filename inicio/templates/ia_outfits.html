@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> IA Outfits | DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="cuerpo">
+    <header class="cuerpo-cabecera">
+        <a class="cuerpo-cabecera-logo" href="{% url 'dashboard' %}">
+            <img class="cuerpo-cabecera-logo-imagen" src="{% static 'assets/logo.png' %}" alt="Logo DressMe">
+        </a>
+        <nav class="cuerpo-cabecera-contenedor">
+            <ul>
+                <a href="{% url 'dashboard' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">📊</span> Resumen
+                </a>
+                <a href="{% url 'armario' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">👕</span> Armario
+                </a>
+                <a href="{% url 'ia_outfits' %}" class="cuerpo-cabecera-contenedor-itemactivo">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">✨</span> IA Outfits
+                </a>
+                <a href="{% url 'favoritos' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">⭐</span> Mis Favoritos
+                </a>
+            </ul>
+            <a class="cuerpo-cabecera-contenedor-logout" href="{% url 'home' %}">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="cuerpo-principal">
+        <section class="cuerpo-principal-bienvenida">
+            <article class="cuerpo-principal-bienvenida-texto">
+                <h1 class="cuerpo-principal-bienvenida-texto-titulo">Estilista Virtual</h1>
+                <p class="cuerpo-principal-bienvenida-texto-parrafo">Deja que la magia decida qué ponerte hoy.</p>
+            </article>
+
+            <article class="cuerpo-principal-bienvenida-perfil">
+                <p class="cuerpo-principal-bienvenida-perfil-nombre">{{ request.user.username }}</p>
+                <p class="cuerpo-principal-bienvenida-perfil-inicial">{{ request.user.username|make_list|first|upper }}</p>
+            </article>
+        </section>
+
+        <section class="ia-hero">
+            <h2 class="ia-hero-titulo">✨ Generador Mágico</h2>
+            <p class="ia-hero-parrafo">Haremos una búsqueda rápida en tu armario para encontrar la combinación perfecta para ti. Pulsa el botón para probar suerte.</p>
+            <form method="POST" action="{% url 'ia_outfits' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn-magico">🪄 Generar Outfit</button>
+            </form>
+        </section>
+
+        {% if request.method == 'POST' %}
+        <section class="cuerpo-principal-añadidos ia-resultados-seccion">
+            <h3 class="ia-resultados-titulo">Tu Outfit Sugerido:</h3>
+            
+            <div class="ia-resultados">
+                {% if error %}
+                <div class="outfit-vacio">
+                    <h3>¡Ups!</h3>
+                    <p>{{ error }}</p>
+                    <a href="{% url 'armario' %}" class="cuerpo-principal-estadisticas-item-boton outfit-vacio-boton">Ir al Armario</a>
+                </div>
+                {% else %}
+                    {% for prenda in outfit %}
+                    <article class="cuerpo-principal-añadidos-item-añadido cuerpo-principal-añadidos-item-añadido--relativo">
+                        <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{{ prenda.imagen.url }}" alt="{{ prenda.nombre }}">
+                        <h4 class="cuerpo-principal-añadidos-item-añadido-texto">{{ prenda.nombre }}</h4>
+                        <p class="cuerpo-principal-añadidos-item-añadido-tiempo">{{ prenda.categoria }}</p>
+                    </article>
+                    {% endfor %}
+                    
+                    <div class="ia-resultados-guardar">
+                        <form method="POST" action="{% url 'guardar_outfit' %}">
+                            {% csrf_token %}
+                            {% for prenda in outfit %}
+                                <input type="hidden" name="prendas" value="{{ prenda.id }}">
+                            {% endfor %}
+                            <button type="submit" class="btn-magico btn-estrella">⭐ Guardar este Outfit</button>
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </section>
+        {% endif %}
+
+    </main>
+
+</body>
+</html>

@@ -79,7 +79,7 @@ main {
     background-color: var(--2);
     color: var(--1);
     transform: scale(1.1);
-    /* Aumenta tamaño */
+    
 }
 
 .img__comienzo {
@@ -546,6 +546,10 @@ footer {
     transition: all 0.3s ease;
     width: 100%;
     box-shadow: 0 4px 15px var(--5);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    box-sizing: border-box;
 }
 
 .cuerpo-principal-estadisticas-item-boton:hover {
@@ -646,6 +650,8 @@ footer {
     background: rgba(32, 184, 156, 0.05);
     border: 2px dashed rgba(32, 184, 156, 0.3);
     color: var(--2);
+    min-height: 260px;
+    cursor: pointer;
 }
 
 .cuerpo-principal-añadidos-item-añadir:hover {
@@ -696,14 +702,373 @@ footer {
 }
 
 .notificacion--exito {
-    background-color: var(--2); /* Verde */
+    background-color: var(--2);
+    
 }
 
 .notificacion--error {
-    background-color: var(--7); /* Rojo */
+    background-color: var(--7);
+    
 }
 
 .notificacion.mostrar {
     opacity: 1;
     top: 3rem;
-}
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        Filtros Armario
+********************/
+/*****************************************************************************************************************************************/
+
+.cuerpo-principal-filtros {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.cuerpo-principal-filtros-boton {
+    width: auto;
+    margin-top: 0;
+    background: var(--5);
+    color: var(--2);
+    box-shadow: none;
+}
+
+.cuerpo-principal-filtros-boton-activo {
+    width: auto;
+    margin-top: 0;
+}
+
+.cuerpo-principal-añadidos--expandido {
+    flex-grow: 1;
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        Formulario Flotante Nueva Prenda
+********************/
+/*****************************************************************************************************************************************/
+
+.formulario-prenda-flotante {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.76);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+}
+
+.formulario-prenda-flotante-contenido {
+    border: var(--2) solid;
+    background-color: var(--5);
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    position: relative;
+    animation: modalAparecer 0.3s ease-out forwards;
+}
+
+.formulario-prenda-flotante-cerrar {
+    color: var(--2);
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.formulario-prenda-flotante-cerrar:hover {
+    color: var(--1);
+}
+
+.formulario-prenda {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.formulario-grupo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.formulario-prenda-titulo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--6);
+    margin-bottom: 1.5rem;
+    margin-top: 0;
+}
+
+.formulario-prenda-etiqueta {
+    font-weight: 500;
+    color: var(--6);
+    font-size: 0.95rem;
+}
+
+.formulario-prenda-input {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-size: 1rem;
+    background: var(--1);
+    color: var(--6);
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.formulario-prenda-input:focus {
+    outline: none;
+    border-color: var(--2);
+    box-shadow: 0 0 0 3px rgba(32, 184, 156, 0.1);
+}
+
+.formulario-prenda-input--archivo {
+    padding: 0.6rem;
+    background: var(--5);
+    border: 1.5px dashed rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.formulario-prenda-input--archivo::file-selector-button {
+    background: var(--2);
+    color: var(--1);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+}
+
+.formulario-prenda-input--archivo::file-selector-button:hover {
+    background: #19957d;
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        Eliminar Prenda
+********************/
+/*****************************************************************************************************************************************/
+
+.cuerpo-principal-añadidos-item-añadido--relativo {
+    position: relative;
+}
+
+.cuerpo-principal-añadidos-item-añadido-formulario-eliminar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    margin: 0;
+    padding: 0;
+    z-index: 10;
+}
+
+.cuerpo-principal-añadidos-item-añadido-boton-eliminar {
+    background-color: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    transition: background-color 0.2s;
+}
+
+.cuerpo-principal-añadidos-item-añadido-boton-eliminar:hover {
+    background-color: rgba(255, 0, 0, 1);
+}
+
+/*****************************************************************************************************************************************/
+/********************
+        IA Outfits
+********************/
+/*****************************************************************************************************************************************/
+
+.ia-hero {
+    background: linear-gradient(135deg, var(--1), var(--5));
+    border-radius: 1.25rem;
+    padding: 3rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(32, 184, 156, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.ia-hero-titulo {
+    font-size: 2.5rem;
+    color: var(--6);
+    margin-bottom: 1rem;
+}
+
+.ia-hero-parrafo {
+    font-size: 1.1rem;
+    color: var(--6);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-magico {
+    background: linear-gradient(45deg, var(--2), #17a2b8);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 15px rgba(32, 184, 156, 0.4);
+}
+
+.btn-magico:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(32, 184, 156, 0.6);
+}
+
+.ia-resultados {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.ia-resultados-seccion {
+    background: transparent;
+    padding: 0;
+}
+
+.ia-resultados-titulo {
+    font-size: 1.5rem;
+    color: var(--6);
+    margin-bottom: 1.5rem;
+}
+
+.outfit-vacio {
+    text-align: center;
+    padding: 3rem;
+    color: var(--6);
+    background: var(--9);
+    border-radius: 1rem;
+    grid-column: 1 / -1;
+}
+
+.outfit-vacio-boton {
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    margin-top: 1rem;
+}
+
+
+.cuerpo-cabecera-contenedor-item,
+.cuerpo-cabecera-contenedor-itemactivo {
+    text-decoration: none;
+}
+
+.cuerpo-principal-añadidos-item-añadido-imagen {
+    object-fit: cover;
+}
+
+.ia-resultados-guardar {
+    grid-column: 1 / -1;
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-estrella {
+    background: linear-gradient(45deg, #f39c12, #d35400);
+}
+
+.favoritos-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem;
+}
+
+.outfit-tarjeta {
+    background: var(--1);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--5);
+}
+
+.outfit-tarjeta-cabecera {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid var(--5);
+    padding-bottom: 1rem;
+}
+
+.outfit-tarjeta-titulo {
+    color: var(--6);
+    font-size: 1.2rem;
+}
+
+.btn-eliminar-outfit {
+    background: var(--7);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-eliminar-outfit:hover {
+    background: darkred;
+}
+
+.cuerpo-principal-filtros {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.cuerpo-principal-filtros-boton {
+    background: var(--1) !important;
+    
+    box-shadow: none !important;
+}
+
+.cuerpo-principal-filtros-boton-activo {
+    background: var(--2) !important;
+    
+}
+
+@keyframes modalAparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

@@ -1,0 +1,103 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> Armario | DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="cuerpo">
+
+    <header class="cuerpo-cabecera">
+
+        <a class="cuerpo-cabecera-logo" href="{% url 'dashboard' %}">
+            <img class="cuerpo-cabecera-logo-imagen" src="{% static 'assets/logo.png' %}" alt="Logo DressMe">
+        </a>
+
+
+        <nav class="cuerpo-cabecera-contenedor">
+            <ul>
+                <a href="{% url 'dashboard' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">📊</span> Resumen
+                </a>
+                <a href="{% url 'armario' %}" class="cuerpo-cabecera-contenedor-itemactivo">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">👕</span> Armario
+                </a>
+                <a href="{% url 'ia_outfits' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">✨</span> IA Outfits
+                </a>
+                <a href="{% url 'favoritos' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">⭐</span> Mis Favoritos
+                </a>
+            </ul>
+
+            <a class="cuerpo-cabecera-contenedor-logout" href="{% url 'home' %}">Cerrar Sesión</a>
+        </nav>
+
+    </header>
+
+    <main class="cuerpo-principal">
+        <section class="cuerpo-principal-bienvenida">
+            <article class="cuerpo-principal-bienvenida-texto">
+                <h1 class="cuerpo-principal-bienvenida-texto-titulo">Tu Armario</h1>
+                <p class="cuerpo-principal-bienvenida-texto-parrafo">Aquí puedes ver y gestionar todas tus prendas guardadas.</p>
+            </article>
+
+            <article class="cuerpo-principal-bienvenida-perfil">
+                <p class="cuerpo-principal-bienvenida-perfil-nombre">Erneupa</p>
+                <p class="cuerpo-principal-bienvenida-perfil-inicial">E</p>
+            </article>
+        </section>
+        <section class="cuerpo-principal-filtros">
+            <button class="cuerpo-principal-estadisticas-item-boton cuerpo-principal-filtros-boton-activo" onclick="filtrarPrendas('Todos', this)">Todos</button>
+            <button class="cuerpo-principal-estadisticas-item-boton cuerpo-principal-filtros-boton" onclick="filtrarPrendas('Camiseta', this)">Camisetas</button>
+            <button class="cuerpo-principal-estadisticas-item-boton cuerpo-principal-filtros-boton" onclick="filtrarPrendas('Pantalón', this)">Pantalones</button>
+            <button class="cuerpo-principal-estadisticas-item-boton cuerpo-principal-filtros-boton" onclick="filtrarPrendas('Zapato', this)">Zapatos</button>
+            <button class="cuerpo-principal-estadisticas-item-boton cuerpo-principal-filtros-boton" onclick="filtrarPrendas('Accesorio', this)">Accesorios</button>
+        </section>
+
+        <section class="cuerpo-principal-añadidos cuerpo-principal-añadidos--expandido">
+            <article class="cuerpo-principal-añadidos-item">
+
+                <article class="cuerpo-principal-añadidos-item-añadir" onclick="abrirFormularioPrenda()">
+                    <span class="cuerpo-principal-añadidos-item-añadir-signo">+</span>
+                    <p class="cuerpo-principal-añadidos-item-añadir-texto">Nueva Prenda</p>
+                </article>
+
+                {% for prenda in prendas %}
+                <article class="cuerpo-principal-añadidos-item-añadido cuerpo-principal-añadidos-item-añadido--relativo" data-categoria="{{ prenda.categoria }}">
+                    <form action="{% url 'eliminar_prenda' prenda.id %}" method="POST" class="cuerpo-principal-añadidos-item-añadido-formulario-eliminar">
+                        {% csrf_token %}
+                        <button type="submit" onclick="return confirm('¿Estás seguro de que quieres eliminar esta prenda?');" class="cuerpo-principal-añadidos-item-añadido-boton-eliminar">✕</button>
+                    </form>
+                    <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{{ prenda.imagen.url }}"
+                        alt="{{ prenda.nombre }}" style="object-fit: cover;">
+                    <h4 class="cuerpo-principal-añadidos-item-añadido-texto">{{ prenda.nombre }}</h4>
+                    <p class="cuerpo-principal-añadidos-item-añadido-tiempo">{{ prenda.categoria }}</p>
+                </article>
+                {% endfor %}
+
+            </article>
+        </section>
+
+    </main>
+
+    {% include 'formulario_prenda.html' %}
+
+    <script src="{% static 'assets/js/formulario_prenda.js' %}"></script>
+    <script src="{% static 'assets/js/filtros_armario.js' %}"></script>
+
+
+
+</body>
+
+</html>

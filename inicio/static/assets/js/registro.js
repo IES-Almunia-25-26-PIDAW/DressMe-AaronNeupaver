@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const confirmarContrasena = document.getElementById('password-confirm');
     const formulario = document.querySelector('.iniciar-sesion__formulario');
 
-    // Función para mostrar notificación personalizada
+
     function mostrarNotificacion(mensaje, tipo, callback = null) {
         const notificacionExistente = document.querySelector('.notificacion');
         if (notificacionExistente) notificacionExistente.remove();
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
     }
 
-    // Estilos que meto por aquí directamente
+
     const estilo = document.createElement('style');
     estilo.innerHTML = `
         .iniciar-sesion__input-wrapper {
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(estilo);
 
-    // Le meto un contenedor a cada campo y el asterisco rojo
+
     campos.forEach(campo => {
         const contenedor = document.createElement('div');
         contenedor.classList.add('iniciar-sesion__input-wrapper');
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return formularioValido;
     };
 
-    // Validación cuando salgas de cada campo
+
     campos.forEach(campo => {
         campo.addEventListener('blur', () => {
             validarVacio(campo);
@@ -143,14 +143,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Submit del formulario
+
     if (formulario) {
         formulario.addEventListener('submit', (evento) => {
             if (!validarFormulario()) {
-                evento.preventDefault(); // Evitamos el envío si hay errores visuales
+                evento.preventDefault();
                 mostrarNotificacion('Revisa los campos, hay algo que falta o está mal.', 'error');
             }
-            // Si es válido, no hacemos preventDefault y dejamos que el navegador lo envíe a Django
         });
     }
 });

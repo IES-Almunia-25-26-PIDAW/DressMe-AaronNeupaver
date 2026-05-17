@@ -36,7 +36,6 @@
     </main>
 
     <script>
-        // 1. Primero declaras la función (Scope Global)
         function handleCredentialResponse(response) {
             try {
                 const payload = JSON.parse(atob(response.credential.split('.')[1]));
@@ -47,14 +46,13 @@
             }
         }
 
-        // 2. Luego el código de inicialización
         window.onload = function () {
             const miBoton = document.getElementById("btn-diseno-propio");
             const contenedorGoogle = document.getElementById("google-button-hidden");
 
             google.accounts.id.initialize({
                 client_id: "162460213441-qavs4jnq2jv4qapq4d241ovfbongoej0.apps.googleusercontent.com",
-                callback: handleCredentialResponse, // Ahora sí la encontrará
+                callback: handleCredentialResponse,
                 use_fedcm_for_prompt: true
             });
 

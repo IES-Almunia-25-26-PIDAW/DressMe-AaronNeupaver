@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title> Mis Favoritos | DressMe </title>
+    <link rel="icon" href="{% static 'assets/mini-logo.png' %}" class="DressMe">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body class="cuerpo">
+    <header class="cuerpo-cabecera">
+        <a class="cuerpo-cabecera-logo" href="{% url 'dashboard' %}">
+            <img class="cuerpo-cabecera-logo-imagen" src="{% static 'assets/logo.png' %}" alt="Logo DressMe">
+        </a>
+        <nav class="cuerpo-cabecera-contenedor">
+            <ul>
+                <a href="{% url 'dashboard' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">📊</span> Resumen
+                </a>
+                <a href="{% url 'armario' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">👕</span> Armario
+                </a>
+                <a href="{% url 'ia_outfits' %}" class="cuerpo-cabecera-contenedor-item">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">✨</span> IA Outfits
+                </a>
+                <a href="{% url 'favoritos' %}" class="cuerpo-cabecera-contenedor-itemactivo">
+                    <span class="cuerpo-cabecera-contenedor-item-apartado">⭐</span> Mis Favoritos
+                </a>
+            </ul>
+            <a class="cuerpo-cabecera-contenedor-logout" href="{% url 'home' %}">Cerrar Sesión</a>
+        </nav>
+    </header>
+
+    <main class="cuerpo-principal">
+        <section class="cuerpo-principal-bienvenida">
+            <article class="cuerpo-principal-bienvenida-texto">
+                <h1 class="cuerpo-principal-bienvenida-texto-titulo">Tus Outfits Favoritos</h1>
+                <p class="cuerpo-principal-bienvenida-texto-parrafo">Aquí tienes tus combinaciones ganadoras guardadas.</p>
+            </article>
+
+            <article class="cuerpo-principal-bienvenida-perfil">
+                <p class="cuerpo-principal-bienvenida-perfil-nombre">{{ request.user.username }}</p>
+                <p class="cuerpo-principal-bienvenida-perfil-inicial">{{ request.user.username|make_list|first|upper }}</p>
+            </article>
+        </section>
+
+        <section class="favoritos-grid">
+            {% if outfits %}
+                {% for outfit in outfits %}
+                <div class="outfit-tarjeta">
+                    <div class="outfit-tarjeta-cabecera">
+                        <h3 class="outfit-tarjeta-titulo">Outfit de fecha {{ outfit.fecha_creacion|date:"d M Y" }}</h3>
+                        <form method="POST" action="{% url 'eliminar_outfit' outfit.id %}">
+                            {% csrf_token %}
+                            <button type="submit" class="btn-eliminar-outfit">Eliminar Outfit</button>
+                        </form>
+                    </div>
+                    
+                    <div class="ia-resultados">
+                        {% for prenda in outfit.prendas.all %}
+                        <article class="cuerpo-principal-añadidos-item-añadido cuerpo-principal-añadidos-item-añadido--relativo">
+                            <img class="cuerpo-principal-añadidos-item-añadido-imagen" src="{{ prenda.imagen.url }}" alt="{{ prenda.nombre }}">
+                            <h4 class="cuerpo-principal-añadidos-item-añadido-texto">{{ prenda.nombre }}</h4>
+                            <p class="cuerpo-principal-añadidos-item-añadido-tiempo">{{ prenda.categoria }}</p>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="outfit-vacio">
+                    <h3>Aún no tienes favoritos</h3>
+                    <p>Ve a IA Outfits, genera combinaciones y guarda las que más te gusten.</p>
+                    <a href="{% url 'ia_outfits' %}" class="cuerpo-principal-estadisticas-item-boton outfit-vacio-boton btn-estrella">Generar Outfits</a>
+                </div>
+            {% endif %}
+        </section>
+
+    </main>
+
+</body>
+</html>

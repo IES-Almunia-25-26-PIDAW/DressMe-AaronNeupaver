@@ -1,0 +1,33 @@
+<div id="formularioPrendaFlotante" class="formulario-prenda-flotante">
+    <div class="formulario-prenda-flotante-contenido">
+        <span class="formulario-prenda-flotante-cerrar" onclick="cerrarFormularioPrenda()">&times;</span>
+        <h2 class="formulario-prenda-titulo">Añadir Nueva Prenda</h2>
+
+        <form action="{% url 'armario' %}" method="POST" enctype="multipart/form-data" class="formulario-prenda">
+            {% csrf_token %}
+            <div class="formulario-grupo">
+                <label class="formulario-prenda-etiqueta" for="nombre">Nombre de la Prenda</label>
+                <input class="formulario-prenda-input" type="text" id="nombre" name="nombre" required
+                    placeholder="Ej. Camiseta Azul">
+            </div>
+
+            <div class="formulario-grupo">
+                <label class="formulario-prenda-etiqueta" for="categoria">Categoría</label>
+                <select class="formulario-prenda-input" id="categoria" name="categoria" required>
+                    <option value="Camiseta">Camiseta</option>
+                    <option value="Pantalón">Pantalón</option>
+                    <option value="Zapato">Zapato</option>
+                    <option value="Accesorio">Accesorio</option>
+                </select>
+            </div>
+
+            <div class="formulario-grupo">
+                <label class="formulario-prenda-etiqueta" for="imagen">Foto de la Prenda</label>
+                <input class="formulario-prenda-input formulario-prenda-input--archivo" type="file" id="imagen"
+                    name="imagen" accept="image/*" required>
+            </div>
+
+            <button type="submit" class="cuerpo-principal-estadisticas-item-boton">Guardar Prenda</button>
+        </form>
+    </div>
+</div>
