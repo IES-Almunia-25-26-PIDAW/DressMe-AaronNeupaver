@@ -15,20 +15,6 @@
 
 ---
 
-<p align="center">
-  <a href="https://dressme-aaronneupaver-production.up.railway.app/">
-    <img src="https://img.shields.io/badge/🚀 Demo-DressMe-blue?style=for-the-badge" alt="Demo">
-  </a>
-  &nbsp;
-  <a href="#">
-    <img src="https://img.shields.io/badge/📘 Wiki-Documentation-green?style=for-the-badge" alt="Wiki">
-  </a>
-  &nbsp;
-  <a href="#">
-    <img src="https://img.shields.io/badge/📘 Contributing-Documentation-pink?style=for-the-badge" alt="CONTRIBUTING">
-  </a>
-</p>
-
 ## Significado de la aplicación
 DressMe es un gestor de armario digital y asistente de moda. Permite a los usuarios tener un inventario visual de su ropa, categorizarla y delegar la decisión de combinar prendas en un algoritmo generativo de conjuntos (*outfits*).
 
