@@ -32,7 +32,7 @@ CSRF_TRUSTED_ORIGINS = ['https://dressme-aaronneupaver-production.up.railway.app
 # Application definition
 
 INSTALLED_APPS = [
-    'inicio',
+    'DressMeProject',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DjangoProject.urls'
+ROOT_URLCONF = 'DressMeProject.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoProject.wsgi.application'
+WSGI_APPLICATION = 'DressMeProject.wsgi.application'
 
 
 # Database

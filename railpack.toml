@@ -2,4 +2,4 @@
 cmd = "python manage.py collectstatic --noinput"
 
 [start]
-cmd = "gunicorn --bind 0.0.0.0:${PORT:-8000} DjangoProject.wsgi:application"
+cmd = "gunicorn --bind 0.0.0.0:${PORT:-8000} DressMeProject.wsgi:application"
