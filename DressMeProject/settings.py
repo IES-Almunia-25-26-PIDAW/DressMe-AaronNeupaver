@@ -9,8 +9,11 @@ https://docs.djangoproject.com/en/6.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
-import os # Asegúrate de que esta línea esté al principio del archivo
+import os
 from pathlib import Path
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8cq0jy_g9x1j8)owlj$aqn36rm)$d6hp4#ot$!sp=&9s7r3d#d'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-8cq0jy_g9x1j8)owlj$aqn36rm)$d6hp4#ot$!sp=&9s7r3d#d')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://dressme-aaronneupaver-production.up.railway.app', 'https://*.railway.app']
